@@ -1,0 +1,189 @@
+# Libraries
+!pip install pyTelegramBotAPI
+!pip install python-telegram-bot-calendar
+import telebot  
+import time
+import random
+from datetime import date, datetime
+img1 = 'https://cdn.pixabay.com/photo/2019/08/29/06/40/tourism-4438308_960_720.jpg'
+imgconst = 'https://munibarranco.gob.pe/wp-content/uploads/2020/08/seccion-en-construccion.png'
+
+#------------------------------------LISTAS------------------------------------------------------------------------------------------------------------------------------------
+aerolineas = ['Swiss International Airlines','Air Nostrum','Lufthansa','Air Berlin','Arik Air','Tunisair','Kenya Airways','Air Canada','Delta Air Lines',
+  'Alaska Airlines','LATAM Airlines','Sky Airline','Gol Airlines','Air Canadá','Air France','La Costeña','United Airlines','Caribbean Airlines',
+  'International (Winair)','Air Sunshine','Air Caraïbes','Aerolíneas de Afganistán‎','Aerolíneas de Armenia‎','Aerolíneas de Azerbaiyán‎',
+  'Aerolíneas de Birmania‎','Aerolíneas de Australia‎','Aerolíneas de Fiyi‎','Aerolíneas de Indonesia‎','Aerolíneas de Nueva Caledonia‎',
+  'Aerolíneas de Nueva Zelanda‎']
+aeropuertos = ['Aeropuerto Adolfo Suarez Madrid-Barajas','Aeropuerto de Londres-Heathrow','Aeropuerto de París-Charles de Gaulle',
+  'Aeropuerto de Frankfurt','Internacional de Moscú-Sheremetyevo','Aeropuerto de Ámsterdam-Schiphol','Aeropuerto de Roma-Fiumicino',
+  'Aeropuerto Internacional de El Cairo','Aeropuerto Internacional de Sharm el-Sheij','Aeropuerto de Johannesburgo','Aeropuerto Internacional Mohámmed V',
+  'Aeropuerto Internacional de la Ciudad del Cabo','Aeropuerto Internacional Hartsfield-Jackson','Aeropuerto Internacional Chicago-O’Hare','Aeropuerto Internacional de Vancouver',
+  'Aeropuerto Internacional de Toronto Pearson','Aeropuerto Internacional de la Ciudad de México','Aeropuerto Internacional de Cancún',
+  'Aeropuerto Internacional de São Paulo-Guarulhos','Aeropuerto Internacional Ministro Pistarini','Aeropuerto Internacional Jorge Chávez',
+  'Aeropuerto Internacional Comodoro Arturo Merino Bení­tez','Aeropuerto Internacional El Dorado','Aeropuerto Internacional de Galeão','Aeropuerto de San Cristóbal',
+  'Aeropuerto Internacional Mariscal Sucre','Aeropuerto Internacional José Joaquín de Olmedo','Aeropuerto Internacional Juan Santamaría',
+  'Aeropuerto Internacional Augusto C. Sandino','Aeropuerto Internacional de Tocumen','Aeropuerto Internacional La Aurora','Aeropuerto Internacional de El Salvador',
+  'Aeropuerto Internacional Marcos A. Gelabert','Aeropuerto Internacional Reina Beatriz','Aeropuerto Internacional José Martí',
+  'Aeropuerto Internacional Lynden Pindling','Aeropuerto Internacional Hato','Aeropuerto Internacional Luis Muñoz Marín','Aeropuerto Internacional de Punta Cana',
+  'Aeropuerto Internacional de Tokio','Aeropuerto Internacional de Pekín','Aeropuerto Internacional de Hong Kong','Aeropuerto Internacional de Bangkok',
+  'Aeropuerto de Singapur','Aeropuerto Internacional de Dubái','Aeropuerto de Sídney','Aeropuerto Internacional de Auckland','Aeropuerto de Melbourne',
+  'Aeropuerto de Brisbane']
+IATA = ['MAD','LHR','CDG','FRA','SVO','AMS','FCO','CAI','SSH','JNB','CMN','CPT','ATL','ORD','YVR','YYZ','MEX','CUN','GRU','EZE','LIM','SCL','BOG',
+  'GIG','SCY','UIO','GYE','SJO','MGA','PTY','GUA','SAL','PAC','AUA','HAV','NAS','CUR','SJU','PUJ','HND','PEK','HKG','BKK','SIN','DXB','SYD','AKL','MEL','BNE']
+paises = ['Espana','Inglaterra','Francia','Alemania','Rusia','Holanda','Italia','Egipto','Egipto','Sudáfrica','Marruecos','Sudáfrica','Estados Unidos',
+  'Estados Unidos','Canadá','Canadá','México','México','Brasil','Argentina','Perú','Chile','Colombia','Brasil','Ecuador','Ecuador','Ecuador','Costa Rica',
+  'Nicaragua','Panamá','Guatemala','El Salvador','Panamá','Aruba','Cuba','Bahamas','Curazao','Puerto Rico','República Dominicana','Japón','China','China',
+  'Tailandia','Singapur','Emiratos Árabes Unidos','Australia','Nueva Zelanda','Australia','Australia']
+ciudades = ['Madrid','Londres','París','Frankfurt','Moscú','Ámsterdam','Roma','El Cairo','Sharm el-Sheij','Johannesburgo','Casablanca','Ciudad del Cabo',
+  'Atlanta','Chicago','Vancouver','Toronto','Ciudad de México','Cancún','São Paulo','Buenos Aires','Lima','Santiago de Chile','Bogotá','Río de Janeiro',
+  'Galápagos','Quito','Guayaquil','San Jose','Managua','Ciudad de Panamá','Ciudad de Guatemala','San Salvador','Ciudad de Panamá','Oranjestad','La Habana',
+  'Nassau','Willemstad','San Juan','Punta Cana','Tokio','Pekín','Hong Kong','Bangkok','Ciudad de Singapur','Dubái','Sidney','Auckland','Melbourne','Brisbane']
+busquedas = ['Código IATA','Aeropuerto','Ciudad','País']
+vuelo = []
+cantidad_de_vuelos = 30
+for _ in range (cantidad_de_vuelos): 
+    a = random.randint (0, 29)  
+    b = random.randint (0, 48)   
+    c = random.randint (0, 48)  
+    start_dt = date.today().toordinal()
+    end_dt = date.today().replace(month= 6, year = 2021).toordinal()
+    random_day = date.fromordinal (random.randint (start_dt, end_dt))
+    vuelo.append ((a, b, c,random_day))
+bot_token = '1669389297:AAGoDD5tvcpjKLf7CQ2lg5CaHXKoJ_gNV5M' 
+bot = telebot.TeleBot (bot_token) 
+
+@bot.message_handler (commands = ['start']) 
+def welcome (message):
+  chat_id = message.chat.id 
+  if (message.chat.first_name == None and message.chat.last_name == None):  
+    user_name = ''
+  elif (message.chat.last_name == None):
+    user_name = message.chat.first_name
+  else:
+    user_name = message.chat.first_name + ' ' + message.chat.last_name
+  print (user_name)
+  salida = (f'Hola! {user_name}.\n' +'SOF-FLY TE DA LA BIENVENIDA.............\n' + 
+            'utiliza el comando /menu para acceder a las diferentes opciones que tenemos para ti  :3\n\n'
+            +f'{img1}') 
+  bot.send_message (chat_id, salida)  
+
+@bot.message_handler (commands = ['menu'])
+def menu (message):
+  chat_id = message.chat.id 
+  salida = (f'Menú\n\n'+
+            '/list:             \nLista de vuelos disponibles.\n\n' +
+            '/search:           \nBusqueda de vuelos.\n\n'+
+            '/buyticket:       \nReservar boletos.\n\n')
+  bot.send_message (chat_id, salida)
+
+@bot.message_handler (commands = ['list'])
+def fullvuelos (message):
+  chat_id = message.chat.id 
+  for e in vuelo:
+    print (f'vuelo: {e}')
+    a = e[0]  # Aerolínea
+    b = e[1]  # Origne
+    c = e[2]  # Destino
+    d = datetime.strftime(e[3],'%d %b, %Y')
+    salidavuelos = (f'Aerolínea:   {aerolineas[a]}\n'+
+               f'Origen:\n ({IATA[b]}) {aeropuertos[b]} - {ciudades[b]}, {paises[b]}\n' +
+               f'Destino:\n  ({IATA[c]}) {aeropuertos[c]} - {ciudades[c]}, {paises[b]}\n'+
+               f'Fecha:   {d}'+
+               f' REGRESAR AL MENÚ: /menu')
+    bot.send_message (chat_id, salidavuelos) 
+
+@bot.message_handler (commands = ['search'])
+def search (message): 
+  chat_id = message.chat.id 
+  salidamsg = (f'INGRESA EL CRITERIO DE BUSQUEDA PARA ENCONTRAR TU VUELO: \n'+
+            '(ESTE PUEDE SER INGRESANDO  IATA,  CIUDAD,  PAIS O EL NOMBRE DEL AEROPUERTO)')
+  bot.send_message(chat_id, salidamsg) 
+
+@bot.message_handler (commands = ['buyticket'])
+def reserva (message):
+  chat_id = message.chat_id
+  salidabuy = (f'\n CUIDADO---------BLOQUE_DE_CODIGO_EN_CONSTRUCCION---------\n')
+           # f'{imgconst}\n\n')
+  bot.send_message(chat_id,salidabuy)
+
+def find_origen(message):
+  op = 0
+  for text in message:
+    if 'IATA' in  text or 'IATA'.lower() in  text:
+      salida = ('INGRESA EL CODIGO IATA QUE DESEAS BUSCAR: :\n'+
+                'REGRESAR AL MENÚ: /menu')
+      opp == 1
+      return salida,opp
+    elif 'PAIS' in text or 'PAIS'.lower() in text:
+      salida = ('INGRESA EL PAIS QUE DESEAS BUSCAR: \n'+
+                'REGRESAR AL MENÚ: /menu')
+      opp == 2
+      return salida, opp
+    elif 'CIUDAD' in text or 'CIUDAD'.lower() in text:
+      salida = ('INGRESE LA CIUDAD QUE DESEA BUSCAR: \n'+
+                'REGRESAR AL MENÚ: /menu')
+      opp == 3
+      return salida,opp
+    elif 'AEROPUERTO' in text or 'AEROPUERTO'.lower() in text:
+      salida = ('INGRESE EL NOMBRE DEL AEROPUERTO QUE DESEA BUSCAR: \n'+
+                'REGRESAR AL MENÚ: /menu')
+      opp == 4
+      return salida,opp
+    else:
+      salida = ('BUSQUEDA NO DISPONIBLE. \n'+
+                'REGRESAR AL MENÚ: /menu')
+      return salida,opp
+  
+@bot.message_handler (func = lambda  message: message.text)  
+def search (message,op):
+  texts1 = message.text.split()
+  texts2 = message2.text.split()
+  att_text = find_origen(texts1)
+  bot.reply_to(message,att_text)
+  for ec in IATA:  
+      if (texts2 == ec): 
+        index = IATA.index (ec)
+        print (index)
+        for e in vuelo:  
+          if (index == e[index_od]):
+             count += 1
+             print (e)
+             a = e[0]  
+             b = e[1]  
+             c = e[2]  
+             d = datetime.strftime(e[3],'%d %b, %Y')
+             out_put = (f'Aerolínea:   {list_aerolinea[a]}\n'+
+                       f'Origen:\n ({IATA[b]}) {aeropuertos[b]} - {ciudades[b]}, {paises[b]}\n' +
+                       f'Destino:\n  ({IATA[c]}) {aeropuertos[c]} - {ciudades[c]}, {paises[b]}\n'+
+                       f'Fecha:   {d}')
+             bot.send_message (chat_id, out_put) 
+          break
+      if (count == 0):
+          bot.send_message (chat_id, 'Vuelo no disponible.')   
+  
+#@bot.message_handler (func = lambda  message: message.text)  
+#def search_instagram (message):
+#  texts = message.text.split()
+#  at_text = find_at(texts)
+#  bot.reply_to(message,'https://www.instagram.com/{}'.format(at_text[1:]))
+
+#def calendar (message):
+#  chat_id = message.chat.id 
+#  calendar, step = DetailedTelegramCalendar(min_date = date.today()).build()
+#  out_put = (f'Seleccione {LSTEP[step]}')
+#  bot.send_message (chat_id, out_put, reply_markup = calendar)
+
+#def find_at(message):
+#  for text in message:
+#    if '@' in text:
+#      return text
+  
+def main ():  
+  print ('Running...')
+  while True:
+    try:
+      bot.polling ()
+    except Exception:
+      time.sleep (15)
+if __name__ == '__main__': 
+  main ()
