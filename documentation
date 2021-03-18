@@ -1,0 +1,449 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{changepage}
+\usepackage{float}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\usepackage{amssymb}
+%INTERLINEADO
+\usepackage{setspace}
+
+\usepackage{eso-pic}
+\newcommand\BackgroundPic{
+\put(0,0){
+\parbox[b][\paperheight]{\paperwidth}{%
+\vfill
+\centering
+\includegraphics[width=\paperwidth,height=\paperheight,
+keepaspectratio]{universidad.png}%
+\vfill
+}}}
+
+\lhead{\begin{picture}(0,0) \put(0,0){\includegraphics[width=20mm]{p1.jpg}} \end{picture}}
+\renewcommand{\headrulewidth}{0.5pt}
+
+\pagestyle{fancy}
+\begin{document}
+\AddToShipoutPicture*{\BackgroundPic}
+
+
+\pagestyle{plain}{
+\pagestyle{empty}
+\changepage{3cm}{1cm}{-0.5cm}{-0.5cm}{}{-2cm}{}{}{}
+\noindent
+{
+	\small
+	\begin{tabular}{p{0.75\textwidth} p{0.25\textwidth} }
+	\includegraphics[scale=0.3]{logoUniversidad.png}&\includegraphics[scale=0.5]{images.jpg} 
+	\end{tabular}
+}
+}
+%datos de la caratula
+\begin{center}
+\par\vspace{1cm} 
+{
+%CARATULA%
+	\Huge\textbf{
+		\onehalfspacing
+		\Large\textbf{UNIVERSIDAD DE GUAYAQUIL}\\
+		\Large\textbf{FACULTAD DE CIENCIAS MATEMATICAS Y  FISICAS}\
+		\Large\textbf{CARRERA DE INGENIERIA EN SOFTWARE}\
+	}
+}
+\par\vspace{1cm}
+{
+	\onehalfspacing
+	\Large\textbf{TEMA}
+	\Large{ Realizar una aplicación (bot) para una Agencia de Viajes a través de Telegram. }\
+	\par\vspace{0.5cm}
+	\Large\textbf{ALUMNOS}\\
+	\Large{MERCHAN MURILLO IDER IVAN}\\
+	\Large{SALGUERO ZAMBRANO AUSTIN ADRIAN}\\
+	\Large{WASHINGTON ROBERTH QUIMI FRANCO}\\
+	\par\vspace{0.5cm}
+	\Large\textbf{DOCENTE }\\
+	\Large{MSC. MIGUEL BOTTO-TOBAR}\\
+	\par\vspace{0.5cm}
+	\Large\textbf{CURSO}\\
+	\Large{PROCESO DE SOFTWARE}\\
+	\par\vspace{0.5cm}
+	\Large\textbf{PARALELO}\\
+	\Large{SOF-S-NO-3-2}\
+	\par\vspace{0.5cm}
+
+}
+\end{center}
+
+\clearpage
+\\ \\ 
+
+\addcontentsline{toc}{chapter}{}
+\setlength{\parskip}{4mm}
+\tableofcontents
+\addtocontents{toc}{\hspace{-7.5mm} \textbf{Capítulos}}
+\addtocontents{toc}{\hfill \textbf{Página} \par}
+\addtocontents{toc}{\vspace{-2mm} \hspace{-7.5mm} \hrule \par}
+
+}
+
+
+\clearpage
+\title{
+Estimación de Costos
+\\  Estimaciones de  Proyecto -Software (bot) para una Agencia de Viajes a través de Telegram
+\\ COCOMO
+\\ NOMBRE DEL BOT: @softskybot}
+
+\maketitle
+
+\section{Introducción}
+Este documento describe la implementación de la metodología de trabajo scrum del proyecto de  Procesos de Software  para la gestión del desarrollo del proyecto hacia una aplicación (bot) para una Agencia de Viajes a través de Telegram.
+Incluye junto con la descripción de este ciclo de vida iterativo e incremental para el proyecto, los documentos con los que se gestionan las tareas de adquisición y suministros así como las responsabilidades y compromisos de los participantes en el proyecto. 
+
+\section{Objetivo}
+Construir una aplicación (bot) para una Agencia de Viajes a través de Telegram. En
+el cual por medio de un Bot el usuario pueda ver si hay vuelos disponibles al
+destino que busca y que le permita comprar un boleto para esto se hace uso de la
+metodolog´ıa Scrum para facilitar el uso de la informaci´on y tener de referencia
+para las personas implicadas en el proyecto, adem´as de poner en pr´actica de la
+estimaci´on de costo para este proyecto.
+ .\
+
+\subsection{Alcance}
+Personas y procedimientos implicados en el desarrollo del sistema de una aplicación (bot) para una Agencia de Viajes a través de Telegram.\
+
+\section{ Descripción de la Metodologia}
+\subsection{Fundamentación}
+Las principales razones del uso de un ciclo de desarrollo incremental para la ejecución de este proyecto son:\\
+
+\begin{itemize}
+\item Las características de la aplicación (bot) para una Agencia de Viajes que permiten desarrollar una base funcional mínima y sobre ella ir incrementando las funcionalidades o modificando el comportamiento o apariencia de las ya implementadas.
+\item Entregas frecuentes de los módulos terminados, de forma que puede disponer de una funcionalidad básica en un tiempo mínimo y a partir de ahí un incremento y mejora continua del sistema.
+\item  Previsible inestabilidad de requisitos.
+\item  Es posible que el sistema incorpore más funcionalidades de las inicialmente identificadas.
+\item Es posible que durante la ejecución del proyecto se altere el orden en el que se desean recibir los módulos o historias de usuario terminadas.
+
+\end{itemize}
+
+
+\section{ Personas y Roles Del Proyecto} 
+\begin{table}[H]
+\begin{tabular}{|l|l|l|}
+\hline
+\rowcolor[HTML]{38FFF8}
+\multicolumn{3}{|c|}{Responsables}            \\ \hline
+\textbf{Persona} & \textbf{Contacto} & \textbf{Rol} \\\hline
+Washington Roberth Quimi Franco   &   Washington-96-@hotmail.com                &  “Gestor de Producto”            \\ \hline
+Salguero Zambrano Austin Adrian   &   austinsalguero08@gmail.com                &  “Scrum Manager”            \\ \hline
+Merchan Murillo Ider Ivan         &   ivanmerchan16@gmail.com               &   “Product Owner”           \\ \hline
+ 
+\end{tabular}
+\end{table}
+
+\section{ Valores de trabajo}
+Los valores que se trabajaron en el equipo desde el momento de su creación, y los que se recomienda que se practiquen en todo tipo de proyecto para culminarlo con éxito son:
+\begin{itemize}
+\item[•]Autonomía del equipo.
+\item[•]Respeto por los integrantes.
+\item[•]Responsabilidad y autodisciplina. 
+\item[•]Foco en la tarea.
+\item[•]Colaborar con el equipo.
+\item[•]Compromiso con la tarea.
+\item[•]Información transparencia y visibilidad
+\end{itemize}
+
+\section{ Pila del Producto}
+Es el equivalente a los requisitos del sistema o del usuario en esta metodología.
+El gestor de producto puede recabar las consultas y asesoramiento que pueda necesitar para su redacción y gestión durante el proyecto al Scrum Manager de este proyecto.
+
+Responsabilidades del gestor de producto:
+\begin{itemize}
+\item[•]Registro en la lista de pila del producto de las historias de usuario que definen el sistema.
+\item[•]Mantenimiento actualizado de la pila del producto en todo momento durante la ejecución del proyecto.
+\item Orden en el que desea quiere recibir terminada cada historia de usuario.
+\item Incorporación / eliminación /modificaciones de las historias o de su orden de prioridad.
+\item Disponibilidad: [ Trabajo por medio de Google Colab´orate, Telegram]
+\end{itemize}
+
+\section{ Responsabilidades del Scrum Manager:}
+\begin{itemize}
+\item[•]Supervisión de la pila de producto, y comunicación con el gestor del producto para pedirle aclaración de las dudas que pueda tener, o asesorarle para la subsanación de las deficiencias que observe.
+\item[•] Supervisión y comunicación con el equipo técnico para pedirle aclaración de las dudas que pueda tener, o asesorarle para la subsanación de las deficiencias que observe. 
+\end{itemize}
+
+\section{Responsabilidades del equipo técnico:}
+
+\begin{itemize}
+\item[•]Conocimiento y comprensión actualizado de la pila del producto. 
+\item[•]Resolución de dudas o comunicación de sugerencias con el Scrum manager.
+\item[•]Desarrollo del software a realizarse.
+\end{itemize}
+
+\begin{table}[H]
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\rowcolor[HTML]{1F1AF3} 
+{\color[HTML]{ECF4FF} ID} & {\color[HTML]{ECF4FF} PRIORIDAD} & {\color[HTML]{ECF4FF} DESCRIPCIÓN} & {\color[HTML]{ECF4FF} ESTIMACIÓN} & {\color[HTML]{ECF4FF} IMPORTANCIA} \\ \hline
+\rowcolor[HTML]{96FFFB} 
+1 & Muy Alta   &  Construcción de aplicacion para agencia de viajes  &  5     &  80  \\ \hline
+2 & Muy Alta   & Buscar usuario por Código IATA                   &  4     &  70   \\ \hline
+\rowcolor[HTML]{96FFFB} 
+3& Alta        & Presentar documentación del proyecto    &  5     &  40   \\ \hline
+\end{tabular}
+\end{table}
+
+\section{ Artefactos}
+\begin{itemize} 
+\item [] Documentos 
+
+\begin{itemize}
+\item[•] Pila de producto o Product Backlog
+\item[•] Pila de sprint o Sprint Backlog \\
+\end{itemize}
+
+\item[] Sprint \\
+\item[] Incremento \\
+\item[] Gráficas para registro y seguimiento del avance 
+\begin{itemize}
+\item[•] Gráfica de avance o Burn Down. \\
+\end{itemize}
+   
+\item[] Comunicación y reporting directo.
+\begin{itemize}
+\item[•] Reunión de inicio de sprint
+\item[•] Reunión técnica diaria
+\item[•] Reunión de cierre de sprint y entrega del incremento
+\end{itemize}
+  
+\end{itemize}
+
+
+\subsection{ Pila del Sprint}
+Es el documento de registro de los requisitos detallados o tareas que va a desarrollar el equipo técnico en la iteración (actual o que esta preparándose para comenzar). Responsabilidades del gestor de producto:\\
+
+\section{Responsabilidades del gestor de producto:}
+\begin{itemize}
+\item Presencia en las reuniones en las que el equipo elabora la pila del sprint.
+\item Resolución de dudas sobre las historias de usuario que se descomponen en la pila del sprint.
+\item Elaboración de la pila del sprint.  \\
+\end{itemize}
+
+\section{Responsabilidad del Scrum Manager}
+\begin{itemize}
+\item  Supervisión y asesoría en la elaboración de la pila de la pila del sprint. \\
+\end{itemize}
+
+\section{Responsabilidad del equipo técnico}
+
+\begin{itemize}
+\item  Resolución de dudas o comunicación de sugerencias sobre las historias de usuario con el gestor del producto.
+\end{itemize}
+
+\subsection{ Sprint} 
+\begin{itemize}
+\item [] Cada una de las iteraciones del ciclo de vida iterativo Scrum. La duración de cada sprint. 
+\item [] En la tabla muestra las fechas de inicio y fin, cuantos días se le dio a cada actividad a realizar.  \\
+\end{itemize}
+
+\begin{figure}[h]
+\centering
+\includegraphics [width=17.5 cm] {2.jpg}
+\end{figure}
+
+
+\begin{figure}[h]
+\centering
+\includegraphics{4.jpg}
+\end{figure}
+
+
+\centering\includegraphics[width=100mm,scale=1]{7.jpg}\\
+\subsection*{ Incremento } 
+Parte o subsistema que se produce en un sprint y se entrega al gestor del producto completamente terminada y operativa.\\
+
+ \\ 
+\begin{figure}[htb]
+\centering
+\includegraphics[width=180mm,scale=1]{1.jpg}
+{Gráfico De Producto (Burn Up)}
+\end{figure}
+ \\ 
+\section {Responsabilidades del gestor de producto}
+\begin{itemize}
+\item Sin responsabilidades específicas, más allá de mantenerse regularmente informado del avance del sprint y disponible para atender decisiones para la resolución de opciones en sprints sobrevalorados o infravalorados (la gráfica de avance predice una entrega anterior o posterior a la fecha prevista)
+
+\subsection*{  Responsabilidades del Scrum Manager}
+\item Supervisión del grafico de producto
+\item Comunicación con el gestor del producto para pedirle aclaración de las dudas que pueda tener.
+\subsection*{  Responsabilidades del equipo técnico}
+\item Conocimiento y comprensión actualizado del plan del producto.
+\item Resolución de dudas o comunicación de sugerencias.
+\item Actualización diaria del gráfico de avance
+\end{itemize}
+
+
+Responsabilidades del gestor de producto:
+
+\begin{itemize}
+\item Sin responsabilidades específicas, más allá de mantenerse regularmente informado del avance del sprint y disponible para atender decisiones para la resolución de opciones en sprints sobrevalorados o infravalorados (la gráfica de avance predice una entrega anterior o posterior a la fecha prevista). \\
+\end{itemize}
+
+\section{Responsabilidad del Scrum Manager}
+\begin{itemize}
+\item Supervisión de la actualización diaria por parte del equipo.
+\item Velar porque Scrum se lleve adelante, transmitiendo sus beneficios a la organización facilitando su implementación. \\
+\end{itemize}
+
+\section{Responsabilidad del equipo técnico}
+
+\begin{itemize}
+\item Actualización diaria del gráfico de avance.
+\item Crear el incremento a partir de la planeación.
+\item Crear el incremento a partir de la planeación.
+\end{itemize}
+
+\subsection{ Reunión de inicio de sprint }
+Reunión para determinar las funcionalidades o historias de usuario que se van a incluir en el próximo incremento.\\
+Responsabilidades del gestor de producto:
+
+\begin{itemize}
+\item Asistencia a la reunión.
+\item Exposición y explicación de las historias que necesita para la próxima iteración y posibles restricciones de fechas que pudiera tener.
+\item Planificar y ejecutar el programa de desarrollo de producto como jefe de proyecto. \\
+\end{itemize}
+
+Responsabilidad del Scrum Manager
+\begin{itemize}
+\item Moderación de la reunión
+\item Enseñar al equipo a autogestionarse. 
+\item Proteger y aislar al equipo de interrupciones externas durante la reunión. \\
+\end{itemize}
+
+\section{Responsabilidad del equipo técnico}
+
+\begin{itemize}
+\item Confección de la pila del sprint.
+\item Auto asignación del trabajo.
+\end{itemize}
+
+\subsection*{ Reunión técnica diaria }
+Puesta en común diaria del equipo con presencia del Coordinador del proyecto o Scrum Manager de duración máxima de 30 minutos.
+
+\section{Responsabilidad del Scrum Manager}
+
+\begin{itemize}
+\item Supervisión de la reunión y anotación de las necesidades o impedimentos que pueda detectar el equipo.
+\item Gestión para la solución de las necesidades o impedimentos detectados por el equipo. \\
+\end{itemize}
+
+
+\section{Responsabilidad del equipo técnico} \\
+
+\begin{itemize}
+\item Comunicación individual del trabajo realizado el día anterior y el previsto para día actual.
+\item Actualización individual del trabajo pendiente.
+\item Actualización del gráfico de avance [Burn Down] para reflejar el estado de avance.
+\item Notificación de necesidades o impedimentos previstos u ocurridos para realizar las tareas asignadas.
+\end{itemize}
+
+\subsection*{ Reunión de cierre de sprint y entrega del incremento.  }
+
+Se entrega el incremento\\ \\
+Características: 
+\begin{itemize}
+\item Funcional
+\item Sencillo 
+\item De fácil implementación  \\ \\
+\end{itemize}
+
+\section{ Responsabilidades del gestor de producto:} 
+\begin{itemize}
+\item Asistencia a la reunión
+\item Recepción del producto \\ \\
+\end{itemize}
+
+\section{Responsabilidades del Scrum Manager:}
+\begin{itemize}
+\item  Moderación de la reunión. \\ \\
+\end{itemize}
+
+\section{Responsabilidades del equipo técnico:} 
+\begin{itemize}
+\item  Presentación del incremento \\ \\
+\end{itemize}
+
+\section{Estimación de costo y esfuerzo} 
+
+Para calcular los costos de un sistema es necesario calcular, entre otras cosas su tamaño y en consecuencia el esfuerzo necesario para desarrollarlo. El modelo COCOMO es utilizado para conocer los coeficientes de costo y esfuerzo, en nuestro caso se trabaja con un modelo básico en su modo orgánico.
+La forma general de la ecuación de esfuerzo es:
+\[
+Esfuerzo = a * (KLDC) ^{b}
+\]
+ Los coeficientes que usaremos serán las siguientes:
+ \\ 
+\begin{figure}[htb]
+\centering
+\includegraphics{coeficiente.jpg}
+\end{figure}
+ \\ 
+Con base en la ecuación, los coeficientes y al modelo de desarrollo del proyecto, las ecuaciones de esfuerzo y tiempo de COCOMO son:
+ \\ 
+\begin{figure}[htb]
+\centering
+\includegraphics{modelo.jpg}
+\end{figure}
+ 
+\clearpage
+Se realiza el calculo: 
+\begin{center} 
+\[
+Esfuerzo \ nominal = 3.2  *  170^{1.05}=  703.268794 personas/mes
+\]
+\end{center}
+ 
+Calculamos el FAE: 
+\\  
+\begin{figure}[htb]
+\includegraphics{FAE.jpg}
+FAE = 1 * 1 * 1 * 1 * 1 *1 * 1,07 * 1,19 * 1,29 * 1,17 * 1 * 1,07  * 1 * 1 * 1 = 2.05 
+\end{figure}
+\\ 
+ 
+Ajustando el esfuerzo según las variables descritas: \
+
+\begin{center} 
+Esfuerzo = 703.268794 * 2.05 = 1441.70103\\
+\end{center}
+Con este dato, hallamos el resto de variables: \\ 
+ 
+\begin{center}
+Costo = 1441.70103 * \$175  = \$252297.68  \
+\[
+Tiempo = 2.5 * 1441.70103^{0.38}=  40 meses
+ \]
+Numero medio de personas = 1441.70103/39.65 = 37 personas \
+\end{center}
+
+
+
+
+%\centering\includegraphics[width=80mm,scale=1]{1.jpeg}\\
+\section{Link de acceso al Respositorio de Github:}\\
+ \\\\
+\section{link de Google Colab:}\\
+
+
+\clearpage % salto de paguina 
+\end{document}
